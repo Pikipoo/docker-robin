@@ -1,9 +1,6 @@
 FROM golang:1.8.3
 
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y \
-        docker.io
+RUN apt-get update && apt-get install -y docker.io
 
 # Docker Postgres
 RUN docker pull postgres:9.5.7 && \
