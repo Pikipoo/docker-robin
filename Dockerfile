@@ -13,7 +13,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F9
 # Intalling Postgres's Docker
 RUN su -l root docker pull postgres:9.5.7 && \
     su -l root docker run --name robin-postgres -e POSTGRES_PASSWORD=root -d postgres:9.5.7 && \
-    su -l root docker -it postgres-robin createdb robin
+    su -l root docker -it postgres-robin createdb robin && \
     su -l root docker exec -it postgres-robin psql -U postgres -d robin -c 'CREATE TABLE robin_base(ip INET PRIMARY KEY, total_probability REAL NOT NULL DEFAULT 0);'
 
 # Setting up Robin's dependencies.
