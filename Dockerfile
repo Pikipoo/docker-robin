@@ -1,11 +1,14 @@
 FROM nimmis/golang:1.6.2
 
+RUN apt-get update -y & \
+    apt-get install -y apt-transport-https
+
 # Docker.
 RUN echo "deb http://get.docker.io/ubuntu docker main" >> /etc/apt/sources.list.d/docker.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
-RUN apt-get update -y
-RUN apt-get install -y lxc-docker
-RUN service docker start
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9 && \
+    apt-get update -y && \
+    apt-get install -y lxc-docker && \
+    service docker start
 
 # Docker Postgres
 RUN docker pull postgres:9.5.7
