@@ -1,7 +1,7 @@
 FROM nimmis/golang:1.6.2
 
 RUN apt-get update -y & \
-    apt-get install -y apt-transport-https
+    apt-get install -y apt-transport-https sudo
 
 # Installing Docker.
 RUN echo "deb http://get.docker.io/ubuntu docker main" >> /etc/apt/sources.list.d/docker.list
