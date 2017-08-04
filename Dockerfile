@@ -21,6 +21,6 @@ RUN go get github.com/lib/pq && \
     go get github.com/briandowns/spinner
 
 # Postgres
-RUN apt-get install --no-install-recommends -y -q postgresql
+RUN apt-get install --no-install-recommends -y -q postgresql-9.5
 RUN createdb -U postgres robin && \
     psql -U postgres -d robin -c 'CREATE TABLE robin_base(ip INET PRIMARY KEY, total_probability REAL NOT NULL DEFAULT 0);'
