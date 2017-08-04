@@ -1,4 +1,4 @@
-FROM docker pull docker
+FROM docker
 
 # Instaling Golang
 RUN apt-get update -y && \
