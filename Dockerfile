@@ -1,6 +1,11 @@
-FROM golang:1.8.3
+FROM nimmis/golang:1.6.2
 
-RUN apt-get update && apt-get install -y docker.io
+# Docker.
+RUN cat "deb http://get.docker.io/ubuntu docker main" >> /etc/apt/sources.list.d/docker.list
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+RUN apt-get update -y && \
+    apt-get install -y lxc-docker
+RUN service docker start
 
 # Docker Postgres
 RUN docker pull postgres:9.5.7 && \
